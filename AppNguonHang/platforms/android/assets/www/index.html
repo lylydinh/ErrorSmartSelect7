@@ -1,0 +1,120 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="css/framework7.ios.colors.min.css" rel="stylesheet" />
+  <link href="css/framework7.ios.min.css" rel="stylesheet" />
+  <link href="css/ionicons.min.css" rel="stylesheet" />
+
+
+
+</head>
+
+<body>
+  <div class="statusbar-overlay"></div>
+  <div class="panel-overlay"></div>
+  <div class="panel panel-left panel-cover layout-dark">
+    <div class="content-block-title translatable">Categories</div>
+    <div class="list-block">
+      <ul id="filters">
+        <li class="bg-blue">
+          <a href="aboutus.html" class="item-link item-content close-panel" data-id="0">
+            <div class="item-inner">
+              <div class="item-title translatable">All</div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="views">
+    <div class="view view-main">
+      <div class="navbar">
+        <div class="navbar-inner">
+          <div class="left">
+            <a href="#" class="link icon-only open-panel" data-panel="left"> <i class="icon ion-android-menu"></i></a>
+          </div>
+          <div class="center" id="title">My App</div>
+          <div class="right">
+            <a href="#" class="link icon-only color-gray open-panel alerts-btn bounceIn animated" data-panel="right"><i class="icon ion-ios-bell"></i></a>
+          </div>
+        </div>
+      </div> 
+      <div class="pages navbar-through">
+        <div data-page="index" class="page" style="padding-bottom: 44px;">
+
+          <div class="masonry" data-columns="" style="float: left; margin-top: 100px;">
+            <a href="#" data-popup=".popup-about" class="open-popup">Open Popup</a>
+          </div>
+          <a href="aboutus.html" class="item-link item-content close-panel" data-id="0" style="float: left; margin-top: 100px;">
+            All
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="popup popup-about">
+    <div class="view navbar-fixed">
+      <div class="pages">
+        <div class="page">
+          <div class="page-content">
+            <div class="content-block">
+              <p>About</p>
+              <p><a href="#" class="close-popup">Close popup</a></p>
+              <div class="list-block">
+                <ul>
+                  <!-- Smart select item -->
+                  <li>
+                    <!-- Additional "smart-select" class -->
+                    <a href="#" class="item-link smart-select">
+                      <!-- select -->
+                      <select name="fruits">
+                        <option value="apple" selected>Apple</option>
+                        <option value="pineapple">Pineapple</option>
+                      </select>
+                      <div class="item-content">
+                        <div class="item-inner">
+                          <!-- Select label -->
+                          <div class="item-title">Doesn't Work</div>
+                          <!-- Selected value, not required -->
+                          <div class="item-after">Apple</div>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="scripts/framework7.min.js"></script>
+  <script type='text/javascript'>
+    window.onload = function () {
+      var myApp = new Framework7({});
+      var $$ = Dom7;
+      var mainView = myApp.addView('.view-main', {
+        dynamicNavbar: true,
+      });
+      var popupView = myApp.addView('.popup .view', {
+
+      });
+
+    }
+
+  </script>
+</body>
+
+
+</html>
+

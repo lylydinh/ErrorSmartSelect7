@@ -1,0 +1,112 @@
+﻿<div class="statusbar-overlay"></div>
+<div class="page navbar-fixed" data-page="order">
+  <!-- Navbar -->
+  <div class="navbar-title">Danh sách đơn hàng </div>
+  <a class="navbar-button w-inline-block open-panel" data-load="1" href="#">
+    <div class="icon ion-android-menu navbar-button-icon"></div>
+  </a>
+  <a class="navbar-button right w-inline-block open-popup" data-popup=".searchOrder" href="#">
+    <div class="icon ion-ios-search navbar-button-icon"></div>
+  </a>
+  <!-- Navbar -->
+   
+  <div class="page-content">
+    <!-- This block will be displayed if nothing found -->
+    <div class="content-block searchbar-not-found">
+      <div class="content-block-inner">Không tìm thấy!</div>
+    </div>
+    <div id="order-vue" class="m-t-0 list-block list-block-search searchbar-found m-b-130">
+      <ul class="list-cart">
+        <order-item v-for="item in listOrder" v-bind:order="item" v-bind:key="item.Id"></order-item>
+      </ul>
+    </div>
+  </div>
+  <div class="toolbar tabbar">
+    <div class="toolbar-inner">
+      <a href="#tab1" class="tab-link active">
+        <i class="icon ion-ios-arrow-thin-left"></i>
+      </a>
+      <a href="#tab2" class="tab-link">
+        <span class="badge bg-red">5</span>
+      </a>
+      <a href="#tab3" class="tab-link">
+        <i class="icon ion-ios-arrow-thin-right"></i>
+      </a>
+    </div>
+  </div>
+
+    <template id="order-list">
+        <li class="accordion-item accordion-item-expanded">
+            <a href="#" class="item-content item-link">
+                <div class="item-inner">
+                    <div class="item-title">
+                        <span><img src="img/favicon.ico" /> {{ order.ShopLink }} </span>
+                    </div>
+                </div>
+            </a>
+            <div class="accordion-item-content">
+                <div class="content-block">
+                    <div class="left img-product">
+                        <img v-bind:src="order.ImagePath" width="80" height="80" />
+                        <div v-if="order.Status <= 2">
+                            <label class="label-danger mt-10">{{ lstStatusOrder[1].Text }}</label>
+                        </div>
+                        <div v-if="order.Status > 2">
+                            <label class="label-danger mt-10">{{ lstStatusOrder[order.Status - 1].Text }}</label>
+                        </div>
+                        </div>
+                    <div class="right infor-product">
+                        <div class="list-group">
+                            <ul class="lst-infor-price">
+                                <li class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title">
+                                            <a href="detail.html" v-on:click="clickDetail(order)">{{ order.Code }}</a>
+                                        </div>
+                                        <div class="item-after">
+                                            <p class="infor-package-product">
+                                                <label class=" txt-danger">{{ formatNumberic(order.OrderFreeTableModelView.OrderInfor.TotalLinkNo) }} Link</label>
+                                                <label class=" txt-teal">{{ formatNumberic(order.OrderFreeTableModelView.OrderInfor.TotalProductNo) }} SP</label>
+                                                <label class=" txt-orange">{{ formatNumberic(order.OrderFreeTableModelView.OrderInfor.TotalPackageNo) }} Kiện</label>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title">Tổng tiền hàng:</div>
+                                        <div class="item-after">{{ formatNumberic(order.OrderFreeTableModelView.PurcharseMoney.PurcharseVnd) }}</div>
+                                    </div>
+                                </li>
+                                <li class="item-content border-bottom-1">
+                                    <div class="item-inner">
+                                        <div class="item-title text-green">Đã thanh toán:</div>
+                                        <div class="item-after text-green">{{ formatNumberic(order.OrderFreeTableModelView.PaidMoney) }}</div>
+                                    </div>
+                                </li>
+                                <li class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title text-danger">Còn thiếu:</div>
+                                        <div class="item-after text-danger">{{ formatNumberic(order.OrderFreeTableModelView.MissingMoney) }}</div>
+                                    </div>
+                                </li>
+                                <li class="item-content">
+                                    <div class="item-inner action-btn">
+                                        <p>
+                                            <a><i class="icon ion-flag text-orange" title="khiếu nại"></i> </a>
+                                            <a class="margin-l-r-10"><i class="icon ion-ios-cart-outline text-green" title="đặt hàng"></i> </a>
+                                            <a><i class="icon ion-ios-trash text-danger" title="hủy"></i> </a>
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </template>
+</div>
+
+
